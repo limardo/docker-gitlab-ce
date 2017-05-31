@@ -1,0 +1,19 @@
+version: '2'
+services:
+  gitlab-ce:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    ports:
+      - 8080:80
+      - 443:443
+      - 22:22
+    volumes:
+      - './gitlab-ce/config:/etc/gitlab'
+      - './gitlab-ce/logs:/var/log/gitlab'
+      - './gitlab-ce/data:/var/opt/gitlab'
+  gitlab-runner:
+    image: 'gitlab/gitlab-runner:latest'
+    restart: always
+    volumes:
+      - './gitlab-runner/config:/etc/gitlab-runner'
+      - './gitlab-runner/docker.sock:/var/run/docker.sock'
