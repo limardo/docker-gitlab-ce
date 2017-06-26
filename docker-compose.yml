@@ -17,3 +17,5 @@ services:
     volumes:
       - './gitlab-runner/config:/etc/gitlab-runner'
       - './gitlab-runner/docker.sock:/var/run/docker.sock'
+    depends_on:
+      - gitlab-ce
